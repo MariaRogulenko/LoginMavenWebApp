@@ -1,16 +1,21 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: maria
-  Date: 1/14/17
-  Time: 2:28 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title></title>
 </head>
 <body>
-$END$
+<%@ page session="false" %>
+<span> ${messageMap.login} </span>
+<span> ${messageMap.passwd} </span>
+<span> ${messageMap.success} </span>
+<form action="/login" method="post">
+    Login: <input type="text" name="uname"/>
+    Password: <input type="text" name="pass"/>
+    <input type="submit" value="submit"/>
+
+</form>
+<a href="http://localhost:8080/register">Register</a>
+
 </body>
 </html>
