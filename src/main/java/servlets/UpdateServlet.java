@@ -23,9 +23,9 @@ public class UpdateServlet extends HttpServlet {
             Connection.connect();
             ArrayList<User> list = Connection.getUserList();
             for (int i = 0; i < list.size(); i++) {
-                System.out.println(list.get(i).getUsername());
-                System.out.println(list.get(i).getPassword());
-                System.out.println(list.get(i).getAddress());
+                System.out.println(list.get(i).getUserPass().getUsername());
+                System.out.println(list.get(i).getUserPass().getPassword());
+                System.out.println(list.get(i).getUserAdd().getAddress());
             }
             request.setAttribute("personList", list);
             request.getRequestDispatcher("/update.jsp").forward(request, response);

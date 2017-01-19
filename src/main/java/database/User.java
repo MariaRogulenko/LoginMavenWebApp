@@ -1,39 +1,30 @@
 package database;
 
 /**
- * Created by maria on 1/13/17.
+ * Created by maria on 1/19/17.
  */
 public class User {
+    private UserPassword userPass;
+    private UserAddress userAdd;
 
-    private String username;
-    private String password;
-    private String address;
-
-    public User() {
+    public User (UserPassword p, UserAddress a) {
+        this.userPass = p;
+        this.userAdd = a;
     }
 
-    public String getUsername() {
-        return username;
+    public UserPassword getUserPass() {
+        return userPass;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public UserAddress getUserAdd() {
+        return userAdd;
     }
 
-    public String getPassword() {
-        return password;
+    public void setUserPass(UserPassword userPass) {
+        this.userPass = userPass;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserAdd(UserAddress userAdd) {
+        this.userAdd = userAdd;
     }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
 }

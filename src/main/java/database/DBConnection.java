@@ -47,12 +47,12 @@ public class DBConnection {
 
     }
 
-    public User getUser(String uname) throws SQLException {
+    public UserPassword getUser(String uname) throws SQLException {
         String sqlRequest = "SELECT * FROM users WHERE login = ?";
         PreparedStatement statement = connection.prepareStatement(sqlRequest);
         statement.setString(1, uname);
         ResultSet resultSet = statement.executeQuery();
-        User user = new User();
+        UserPassword user = new UserPassword();
         if (resultSet.next()) {
             user.setUsername(resultSet.getString("login"));
             user.setPassword(resultSet.getString("password"));
@@ -65,12 +65,19 @@ public class DBConnection {
         PreparedStatement statement = connection.prepareStatement(sql);
         ResultSet resultSet = statement.executeQuery();
         ArrayList<User> userArrayList = new ArrayList<User>();
+        UserPassword userPass;
+        UserAddress userAdd;
         User user;
         while (resultSet.next()) {
-            user = new User();
-            user.setUsername(resultSet.getString("login"));
-            user.setPassword(resultSet.getString("password"));
-            user.setAddress(resultSet.getString("address"));
+
+
+            userPass = new UserPassword();
+            userPass.setUsername(resultSet.getString("login"));
+            userPass.setPassword(resultSet.getString("password"));
+            userAdd = new UserAddress();
+            userAdd.setUsername(resultSet.getString("login"));
+            userAdd.setAddress(resultSet.getString("address"));
+            user = new User(userPass, userAdd);
             userArrayList.add(user);
         }
         return userArrayList;

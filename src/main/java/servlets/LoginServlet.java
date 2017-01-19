@@ -2,6 +2,7 @@ package servlets;
 
 import database.DBConnection;
 import database.User;
+import database.UserPassword;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -60,7 +61,7 @@ public class LoginServlet extends HttpServlet {
         DBConnection Connection = new DBConnection();
         try {
             Connection.connect();
-            User user = Connection.getUser(login);
+            UserPassword user = Connection.getUser(login);
             if (user.getUsername() == null ||  !user.getPassword().equals(password)) {
                 messages.put("success", "Your login or password are incorrect");
                 request.getRequestDispatcher("/index.jsp").forward(request, response);

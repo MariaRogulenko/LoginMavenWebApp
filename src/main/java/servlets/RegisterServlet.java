@@ -2,6 +2,7 @@ package servlets;
 
 import database.DBConnection;
 import database.User;
+import database.UserPassword;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,7 +49,7 @@ public class RegisterServlet extends HttpServlet {
         DBConnection Connection = new DBConnection();
         try {
             Connection.connect();
-            User user = Connection.getUser(login);
+            UserPassword user = Connection.getUser(login);
             if (user.getUsername() != null) {
                 messages.put("register", "login already exists");
                 request.getRequestDispatcher("/register.jsp").forward(request, response);
